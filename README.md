@@ -1,2 +1,3 @@
-# mall-map-kiosk
+# Mall Map Kiosk
+
 WPF Mall Map Kiosk Application
