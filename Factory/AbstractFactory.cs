@@ -9,9 +9,10 @@ namespace MallMapKiosk.Factory
 {
     public class AbstractFactory<T> : IAbstractFactory<T> where T : class
     {
-        public T Create()
-        {
-            throw new NotImplementedException();
-        }
+        public readonly Func<T> _factory;
+
+        public AbstractFactory(Func<T> factory) => _factory = factory; 
+
+        public T Create() => _factory();
     }
 }

@@ -23,6 +23,8 @@ namespace MallMapKiosk.Views.Pages
         public Main()
         {
             InitializeComponent();
+
+            this.DataContext = this;
         }
     }
 }
