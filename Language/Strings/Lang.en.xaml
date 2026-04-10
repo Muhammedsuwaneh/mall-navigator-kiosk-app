@@ -7,5 +7,7 @@
     <sys:String x:Key="dining_str">DINING</sys:String>
     <sys:String x:Key="restrooms_str">RESTROOMS</sys:String>
     <sys:String x:Key="exit_str">EXITS</sys:String>
+    <sys:String x:Key="welcome_str_top">MALL</sys:String>
+    <sys:String x:Key="welcome_str_bottom">DIRECTIONS</sys:String>
 
 </ResourceDictionary>

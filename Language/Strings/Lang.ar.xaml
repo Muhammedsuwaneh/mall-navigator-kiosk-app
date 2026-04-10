@@ -7,5 +7,7 @@
     <sys:String x:Key="dining_str">المطاعم</sys:String>
     <sys:String x:Key="restrooms_str">دورات المياه</sys:String>
     <sys:String x:Key="exit_str">المخارج</sys:String>
+    <sys:String x:Key="welcome_str_top">المول</sys:String>
+    <sys:String x:Key="welcome_str_bottom">الاتجاهات</sys:String>
 
 </ResourceDictionary>

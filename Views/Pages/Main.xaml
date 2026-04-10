@@ -4,10 +4,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:l="clr-namespace:MallMapKiosk.Views.Templates.Languages"
+    xmlns:lo="clr-namespace:MallMapKiosk.Views.Templates.Logo"
     xmlns:local="clr-namespace:MallMapKiosk.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mp="clr-namespace:MallMapKiosk.Views.Templates.Map"
     xmlns:mu="clr-namespace:MallMapKiosk.Views.Templates.Menu"
+    xmlns:s="clr-namespace:MallMapKiosk.Views.Templates.Search"
     Title="Main"
     d:DesignHeight="1080"
     d:DesignWidth="1920"
@@ -22,6 +25,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
             <RowDefinition Height="100" />
+            <RowDefinition Height="20" />
             <RowDefinition />
             <RowDefinition Height="150" />
             <RowDefinition Height="30" />
@@ -29,7 +33,7 @@
 
         <!--  overlay  -->
         <Canvas
-            Grid.RowSpan="5"
+            Grid.RowSpan="6"
             Grid.ColumnSpan="3"
             Panel.ZIndex="1"
             Background="#000"
@@ -37,7 +41,7 @@
 
         <!--  - media  -->
         <MediaElement
-            Grid.RowSpan="5"
+            Grid.RowSpan="6"
             Grid.ColumnSpan="3"
             LoadedBehavior="Play"
             Source="{Binding VideoPath}"
@@ -51,10 +55,34 @@
 
         <!--  - top section  -->
 
+        <!--  - logo  -->
+
+        <!--  search  -->
+
+        <!--  - language  -->
+        <Grid
+            Grid.Row="1"
+            Grid.Column="1"
+            VerticalAlignment="Center"
+            Panel.ZIndex="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="750" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="350" />
+            </Grid.ColumnDefinitions>
+
+            <lo:Logo />
+            <s:SearchControl Grid.Column="2" DataContext="{Binding}" />
+            <l:LanguageControl Grid.Column="4" DataContext="{Binding}" />
+
+        </Grid>
+
         <!--  map  -->
 
         <mp:MapControl
-            Grid.Row="2"
+            Grid.Row="3"
             Grid.Column="1"
             Panel.ZIndex="3"
             DataContext="{Binding}" />
@@ -64,7 +92,7 @@
 
         <!--  Menu section  -->
         <Grid
-            Grid.Row="3"
+            Grid.Row="4"
             Grid.Column="1"
             Panel.ZIndex="3">
             <Grid.ColumnDefinitions>
@@ -78,7 +106,35 @@
                 VerticalAlignment="Center"
                 DataContext="{Binding}" />
 
+            <!--  some title  -->
+            <StackPanel Grid.Column="2" Margin="0,-100,30,0">
+                <TextBlock
+                    Margin="0,20,0,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    FontFamily="pack://application:,,,/Assets/Fonts/#Khula Regular"
+                    FontSize="75"
+                    Foreground="#fff"
+                    Text="{DynamicResource welcome_str_top}" />
+                <Rectangle
+                    Width="400"
+                    Height="1"
+                    Margin="0,-15,0,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Fill="#69DFFA" />
+                <TextBlock
+                    Margin="0,-15,0,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    FontFamily="pack://application:,,,/Assets/Fonts/#Khula Regular"
+                    FontSize="75"
+                    Foreground="#fff"
+                    Text="{DynamicResource welcome_str_bottom}" />
+            </StackPanel>
+
         </Grid>
+
 
     </Grid>
 </Page>

@@ -10,5 +10,6 @@ namespace MallMapKiosk.ViewModels.Contracts
     public interface IMainViewModel
     {
         public ICommand MediaEndedCommand { get; }
+        public ICommand LanguageButtonCommand { get; }
     }
 }

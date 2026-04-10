@@ -12,8 +12,8 @@
 
   <ItemGroup>
     <None Remove="Assets\Fonts\Khula-Regular.ttf" />
-    <None Remove="Assets\Images\Dining Room.png" />
-    <None Remove="Assets\Images\Emergency Exit.png" />
+    <None Remove="Assets\Images\DiningRoom.png" />
+    <None Remove="Assets\Images\EmergencyExit.png" />
     <None Remove="Assets\Images\Enlarge.png" />
     <None Remove="Assets\Images\logo.ico" />
     <None Remove="Assets\Images\logo.png" />
@@ -28,9 +28,7 @@
   <ItemGroup>
     <Folder Include="Assets\Gifs\" />
     <Folder Include="Models\" />
-    <Folder Include="Converters\" />
     <Folder Include="Views\Templates\Control\" />
-    <Folder Include="Views\Templates\Search\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,10 +43,10 @@
     <Resource Include="Assets\Fonts\Khula-Regular.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\Images\Dining Room.png">
+    <Resource Include="Assets\Images\DiningRoom.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\Images\Emergency Exit.png">
+    <Resource Include="Assets\Images\EmergencyExit.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Images\Enlarge.png">

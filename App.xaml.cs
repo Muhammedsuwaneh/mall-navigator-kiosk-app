@@ -20,19 +20,22 @@ namespace MallMapKiosk
         public static IHost? AppHost { get; private set; }
         public App()
         {
-               AppHost =  Host.CreateDefaultBuilder()
+            AppHost =  Host.CreateDefaultBuilder()
                 .ConfigureServices((_, services) =>
                 {
-                    services.AddSingleton<MainWindow>();
                     services.AddTransient<IMainViewModel, MainViewModel>();
                     services.AddTransient<Main>();
+                    services.AddSingleton<MainWindow>();
                 })
                 .Build();
+
         }
 
         protected async override void OnStartup(StartupEventArgs e)
         {
             await AppHost!.StartAsync();
+
+            LanguageUtility.ToggleApplicationLanguage("en");
 
             var mainWindow = AppHost.Services.GetRequiredService<MainWindow>();
             mainWindow.Show();

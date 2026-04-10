@@ -1,0 +1,109 @@
+﻿<UserControl
+    x:Class="MallMapKiosk.Views.Templates.Languages.LanguageControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:c="clr-namespace:MallMapKiosk.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:local="clr-namespace:MallMapKiosk.Views.Templates.Languages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="90"
+    d:DesignWidth="300"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <c:LanguageToBrushConverter x:Key="LanguageToBrushConverter" />
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!--  en  -->
+        <Border
+            Width="75"
+            Height="75"
+            Background="{Binding SelectedLanguage, Converter={StaticResource LanguageToBrushConverter}, ConverterParameter=EN}"
+            BorderBrush="#69DFFA"
+            BorderThickness="1"
+            CornerRadius="100"
+            Cursor="Hand"
+            Opacity=".7">
+            <TextBlock
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="25"
+                Foreground="#fff"
+                Text="EN"
+                TextAlignment="Center" />
+
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDown">
+                    <i:InvokeCommandAction Command="{Binding LanguageButtonCommand}" CommandParameter="EN" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Border>
+
+
+        <!--  tr  -->
+        <Border
+            Grid.Column="2"
+            Width="75"
+            Height="75"
+            Background="{Binding SelectedLanguage, Converter={StaticResource LanguageToBrushConverter}, ConverterParameter=TR}"
+            BorderBrush="#69DFFA"
+            BorderThickness="1"
+            CornerRadius="100"
+            Cursor="Hand"
+            Opacity=".7">
+            <TextBlock
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="25"
+                Foreground="#fff"
+                Text="TR"
+                TextAlignment="Center" />
+
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDown">
+                    <i:InvokeCommandAction Command="{Binding LanguageButtonCommand}" CommandParameter="TR" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+
+        </Border>
+
+
+        <!--  ar  -->
+        <Border
+            Grid.Column="4"
+            Width="75"
+            Height="75"
+            Background="{Binding SelectedLanguage, Converter={StaticResource LanguageToBrushConverter}, ConverterParameter=AR}"
+            BorderBrush="#69DFFA"
+            BorderThickness="1"
+            CornerRadius="100"
+            Cursor="Hand"
+            Opacity=".7">
+            <TextBlock
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="25"
+                Foreground="#fff"
+                Text="AR"
+                TextAlignment="Center" />
+
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDown">
+                    <i:InvokeCommandAction Command="{Binding LanguageButtonCommand}" CommandParameter="AR" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+
+        </Border>
+
+    </Grid>
+</UserControl>

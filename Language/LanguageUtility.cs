@@ -9,7 +9,7 @@ namespace MallMapKiosk.Common.Utilities
     {
         private static string ApplicationtLanguageCode = "";
 
-        public static void ToggleApplicationLanguage(MainWindow window, string languageCode)
+        public static void ToggleApplicationLanguage(string languageCode)
         {
             if (languageCode == ApplicationtLanguageCode) return;
 
@@ -40,8 +40,8 @@ namespace MallMapKiosk.Common.Utilities
             Thread.CurrentThread.CurrentUICulture = culture;
             InputLanguageManager.Current.CurrentInputLanguage = culture;
 
-            window.Resources.MergedDictionaries.Clear();
-            window.Resources.MergedDictionaries.Add(dictionary);
+            Application.Current.Resources.MergedDictionaries.Clear();
+            Application.Current.Resources.MergedDictionaries.Add(dictionary);
         }
     }
 }

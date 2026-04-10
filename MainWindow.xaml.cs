@@ -31,12 +31,7 @@ namespace MallMapKiosk
         RegisterHotKeyAppExit(Key.Escape);
     }
 
-    private void MainWindow_Loaded(object sender, RoutedEventArgs e)
-    {
-        LanguageUtility.ToggleApplicationLanguage(this, "en");
-        NavigationFrame.Navigate(App.AppHost!.Services.GetRequiredService<Main>());
-    }
- 
+    private void MainWindow_Loaded(object sender, RoutedEventArgs e) => NavigationFrame.Navigate(App.AppHost!.Services.GetRequiredService<Main>());
 
     private void RegisterHotKeyAppExit(Key Key) 
     {           
