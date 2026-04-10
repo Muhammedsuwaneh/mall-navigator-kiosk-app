@@ -1,4 +1,5 @@
-﻿using MallMapKiosk.Common.Window;
+﻿using MallMapKiosk.Common.Utilities;
+using MallMapKiosk.Common.Window;
 using MallMapKiosk.Views.Pages;
 using Microsoft.Extensions.DependencyInjection;
 using System.Text;
@@ -30,7 +31,12 @@ namespace MallMapKiosk
         RegisterHotKeyAppExit(Key.Escape);
     }
 
-    private void MainWindow_Loaded(object sender, RoutedEventArgs e) => NavigationFrame.Navigate(App.AppHost!.Services.GetRequiredService<Main>());
+    private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+    {
+        LanguageUtility.ToggleApplicationLanguage(this, "en");
+        NavigationFrame.Navigate(App.AppHost!.Services.GetRequiredService<Main>());
+    }
+ 
 
     private void RegisterHotKeyAppExit(Key Key) 
     {           

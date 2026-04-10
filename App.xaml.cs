@@ -1,11 +1,14 @@
-﻿using MallMapKiosk.ViewModels;
+﻿using MallMapKiosk.Common.Utilities;
+using MallMapKiosk.ViewModels;
 using MallMapKiosk.ViewModels.Contracts;
 using MallMapKiosk.Views.Pages;
+using MallMapKiosk.Views.Templates.Map;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Configuration;
 using System.Data;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace MallMapKiosk
 {
@@ -21,8 +24,8 @@ namespace MallMapKiosk
                 .ConfigureServices((_, services) =>
                 {
                     services.AddSingleton<MainWindow>();
-                    services.AddSingleton<Main>();
-                    services.AddSingleton<IMainViewModel, MainViewModel>();
+                    services.AddTransient<IMainViewModel, MainViewModel>();
+                    services.AddTransient<Main>();
                 })
                 .Build();
         }

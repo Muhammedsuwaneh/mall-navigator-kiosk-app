@@ -16,7 +16,7 @@
     mc:Ignorable="d">
     <Grid>
         <Viewbox Stretch="Uniform">
-            <Grid>
+            <Grid Width="1920" Height="1080">
                 <Frame
                     x:Name="NavigationFrame"
                     Background="Transparent"

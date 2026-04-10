@@ -14,17 +14,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MallMapKiosk.Views.Pages
+namespace MallMapKiosk.Views.Templates.Menu
 {
     /// <summary>
-    /// Interaction logic for Main.xaml
+    /// Interaction logic for Menu.xaml
     /// </summary>
-    public partial class Main : Page
+    public partial class MenuControl : UserControl
     {
-        public Main(IMainViewModel MainViewModel)
+        public MenuControl()
         {
             InitializeComponent();
-            this.DataContext = MainViewModel;
         }
     }
 }

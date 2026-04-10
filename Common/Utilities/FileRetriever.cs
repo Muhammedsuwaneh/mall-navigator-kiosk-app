@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace MallMapKiosk.Common.Utilities
 {
-    public class FileRetriever
+    public sealed class FileRetriever
     {
-        public static Func<string, string, string> GetFile = (string fokder, string filename) =>
+        public static Func<string, string, string> GetFile = (string folder, string filename) =>
         {
              var mediaBase = AppDomain.CurrentDomain.BaseDirectory;
-             var mediaPath = Path.Combine(mediaBase, filename);
+             var mediaPath = Path.Combine(mediaBase, folder, filename);
 
              return mediaPath; 
         };

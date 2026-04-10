@@ -11,19 +11,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Fonts\Khula-Regular.ttf" />
+    <None Remove="Assets\Images\Dining Room.png" />
+    <None Remove="Assets\Images\Emergency Exit.png" />
+    <None Remove="Assets\Images\Enlarge.png" />
     <None Remove="Assets\Images\logo.ico" />
     <None Remove="Assets\Images\logo.png" />
+    <None Remove="Assets\Images\map.png" />
+    <None Remove="Assets\Images\Plus Math.png" />
     <None Remove="Assets\Images\search.png" />
+    <None Remove="Assets\Images\Shop.png" />
+    <None Remove="Assets\Images\Subtract.png" />
+    <None Remove="Assets\Images\Toilet.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Assets\Fonts\" />
     <Folder Include="Assets\Gifs\" />
     <Folder Include="Models\" />
     <Folder Include="Converters\" />
-    <Folder Include="Views\Templates\Map\" />
     <Folder Include="Views\Templates\Control\" />
-    <Folder Include="Views\Templates\Menu\" />
     <Folder Include="Views\Templates\Search\" />
   </ItemGroup>
 
@@ -36,13 +42,40 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\Fonts\Khula-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Dining Room.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Emergency Exit.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Enlarge.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Images\logo.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Images\logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Images\map.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Plus Math.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Images\search.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Shop.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Subtract.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Toilet.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
