@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:MallMapKiosk"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="Main"
+    Title="Mall Navigator Kiosk"
     Width="1920"
     Height="1080"
     AllowsTransparency="True"
@@ -16,7 +16,12 @@
     mc:Ignorable="d">
     <Grid>
         <Viewbox Stretch="Uniform">
-            <Frame x:Name="NavigationFrame" NavigationUIVisibility="Hidden" />
+            <Grid>
+                <Frame
+                    x:Name="NavigationFrame"
+                    Background="Transparent"
+                    NavigationUIVisibility="Hidden" />
+            </Grid>
         </Viewbox>
     </Grid>
 </Window>

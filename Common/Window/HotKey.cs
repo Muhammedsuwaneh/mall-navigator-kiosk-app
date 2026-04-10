@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using System.Windows.Interop;
 
 namespace MallMapKiosk.Common.Window
@@ -16,7 +11,7 @@ namespace MallMapKiosk.Common.Window
 
         private bool _isKeyRegistered;
 
-        public HotKey(ModifierKeys modifierKeys, Key key, Window window)
+        public HotKey(ModifierKeys modifierKeys, Key key, System.Windows.Window window)
             : this(modifierKeys, key, new WindowInteropHelper(window))
         {
         }

@@ -11,7 +11,7 @@
     mc:Ignorable="d">
     <Grid>
         <Grid.Background>
-            <SolidColorBrush Color="#333" />
+            <SolidColorBrush Color="red" />
         </Grid.Background>
     </Grid>
 </Page>

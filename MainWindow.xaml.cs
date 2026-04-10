@@ -1,4 +1,6 @@
-﻿using MallMapKiosk.Views.Pages;
+﻿using MallMapKiosk.Common.Window;
+using MallMapKiosk.Views.Pages;
+using Microsoft.Extensions.DependencyInjection;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,18 +18,24 @@ namespace MallMapKiosk
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
+    { 
+    private HotKey HotkeyAppExit { get; set; }
+
+    public MainWindow()
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-            this.Closed += (_, _) => System.Environment.Exit(0);
+        InitializeComponent();
+        this.Closed += (_, _) => System.Environment.Exit(0);
 
-            Loaded += MainWindow_Loaded;
-        }
+        Loaded += MainWindow_Loaded;
+        RegisterHotKeyAppExit(Key.Escape);
+    }
 
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            NavigationFrame.Navigate(new Main());
-        }
+    private void MainWindow_Loaded(object sender, RoutedEventArgs e) => NavigationFrame.Navigate(App.AppHost!.Services.GetRequiredService<Main>());
+
+    private void RegisterHotKeyAppExit(Key Key) 
+    {           
+         if (HotkeyAppExit != null) return; 
+         HotkeyAppExit = new HotKey(ModifierKeys.None, Key, Application.Current.MainWindow); 
+         HotkeyAppExit.HotKeyPressed += (hotkey) => System.Environment.Exit(0); }
     }
 }

@@ -11,60 +11,38 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\Images\compass.png" />
-    <None Remove="Assets\Images\food_bank.png" />
-    <None Remove="Assets\Images\full_screen.png" />
     <None Remove="Assets\Images\logo.ico" />
     <None Remove="Assets\Images\logo.png" />
-    <None Remove="Assets\Images\rest_room.png" />
     <None Remove="Assets\Images\search.png" />
-    <None Remove="Assets\Images\settings.png" />
-    <None Remove="Assets\Images\store.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Assets\Fonts\" />
     <Folder Include="Assets\Gifs\" />
-    <Folder Include="Common\Utilities\" />
-    <Folder Include="Common\Window\" />
     <Folder Include="Models\" />
     <Folder Include="Converters\" />
-    <Folder Include="Extensions\" />
-    <Folder Include="Factory\" />
-    <Folder Include="ViewModels\" />
     <Folder Include="Views\Templates\Map\" />
+    <Folder Include="Views\Templates\Control\" />
+    <Folder Include="Views\Templates\Menu\" />
+    <Folder Include="Views\Templates\Search\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.5" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.5" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.142" />
+    <PackageReference Include="Serilog" Version="4.3.1" />
+    <PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\Images\compass.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Images\food_bank.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Images\full_screen.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Assets\Images\logo.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Images\logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\Images\rest_room.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Assets\Images\search.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Images\settings.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Images\store.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
