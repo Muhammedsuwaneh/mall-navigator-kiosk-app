@@ -7,6 +7,7 @@ using MallMapKiosk.Views.Templates.Menu;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,25 +15,32 @@ using System.Windows.Input;
 
 namespace MallMapKiosk.ViewModels
 {
-    public enum AppLanguage
-    {
-        EN,
-        TR,
-        AR
-    }
-
-    public enum Utilities
-    {
-        Stores,
-        DiningRoom,
-        Toilet,
-        EmergencyExit,
-    }
+    public enum AppLanguage { EN, TR, AR }
+    public enum Utilities { Stores, DiningRoom, Toilet, EmergencyExit }
 
     public class MainViewModel : ViewModelBase, IMainViewModel
     {
+        public ObservableCollection<string> Media { get; set; } = new()
+        {
+            "media_1.mp4",
+            "media_2.mp4",
+            "media_3.mp4",
+            "media_4.mp4"
+        };
+
         private int _currentMediaIndex = 0;
-        private List<string> _media = new() { "media_1.mp4", "media_2.mp4" };
+        public int CurrentMediaIndex
+        {
+            get => _currentMediaIndex;
+            set
+            {
+                if (_currentMediaIndex != value)
+                {
+                    _currentMediaIndex = value;
+                    OnPropertyChanged(nameof(CurrentMediaIndex));
+                }
+            }
+        }
 
         private AppLanguage _selectedLanguage = AppLanguage.EN;
         public AppLanguage SelectedLanguage
@@ -74,7 +82,6 @@ namespace MallMapKiosk.ViewModels
             }
         }
 
-
         private ICommand _languageButtonCommand;
         public ICommand LanguageButtonCommand
         {
@@ -98,19 +105,20 @@ namespace MallMapKiosk.ViewModels
 
         private void OnMediaEnded(object obj)
         {
-            if(_currentMediaIndex == _media.Count - 1)
-                _currentMediaIndex = 0;
+            if(_currentMediaIndex == Media.Count - 1)
+               CurrentMediaIndex = 0;
             else
-                _currentMediaIndex++;
+               CurrentMediaIndex++;
 
-            VideoPath = FileRetriever.GetFile("assets\\", _media[_currentMediaIndex]);
+            VideoPath = FileRetriever.GetFile("assets\\", Media[_currentMediaIndex]);
+            OnPropertyChanged(nameof(CurrentMediaIndex));
         }
 
         public MainViewModel() => InitializeViewModel();
 
         private void InitializeViewModel()
         {
-            _videoPath = FileRetriever.GetFile("assets\\", _media[_currentMediaIndex]);
+            _videoPath = FileRetriever.GetFile("assets\\", Media[_currentMediaIndex]);
         }
     }
 }

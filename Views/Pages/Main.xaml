@@ -2,6 +2,7 @@
     x:Class="MallMapKiosk.Views.Pages.Main"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:c="clr-namespace:MallMapKiosk.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:l="clr-namespace:MallMapKiosk.Views.Templates.Languages"
@@ -15,6 +16,11 @@
     d:DesignHeight="1080"
     d:DesignWidth="1920"
     mc:Ignorable="d">
+
+    <Page.Resources>
+        <c:IndexToBoolConverter x:Key="IndexToBoolConverter" />
+    </Page.Resources>
+
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -54,12 +60,6 @@
         </MediaElement>
 
         <!--  - top section  -->
-
-        <!--  - logo  -->
-
-        <!--  search  -->
-
-        <!--  - language  -->
         <Grid
             Grid.Row="1"
             Grid.Column="1"
@@ -80,12 +80,63 @@
         </Grid>
 
         <!--  map  -->
-
         <mp:MapControl
             Grid.Row="3"
             Grid.Column="1"
             Panel.ZIndex="3"
             DataContext="{Binding}" />
+
+        <!--  - carousel tracker  -->
+        <ItemsControl
+            Grid.Row="3"
+            Grid.Column="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Panel.ZIndex="3"
+            ItemsSource="{Binding Media}">
+
+            <ItemsControl.ItemTemplate>
+
+                <DataTemplate>
+                    <Border>
+                        <Border.Style>
+                            <Style TargetType="Border">
+
+                                <Setter Property="Width" Value="10" />
+                                <Setter Property="Height" Value="10" />
+                                <Setter Property="Opacity" Value="0.7" />
+                                <Setter Property="Background" Value="#69DFFA" />
+                                <Setter Property="Margin" Value="0,10" />
+                                <Setter Property="CornerRadius" Value="20" />
+                                <Setter Property="BorderBrush" Value="#fff" />
+                                <Setter Property="BorderThickness" Value="0" />
+
+                                <Style.Triggers>
+
+                                    <DataTrigger Value="True">
+                                        <DataTrigger.Binding>
+                                            <MultiBinding Converter="{StaticResource IndexToBoolConverter}">
+                                                <Binding RelativeSource="{RelativeSource AncestorType=ItemsControl}" />
+                                                <Binding RelativeSource="{RelativeSource AncestorType=ContentPresenter}" />
+                                                <Binding Path="DataContext.CurrentMediaIndex" RelativeSource="{RelativeSource AncestorType=Page}" />
+                                            </MultiBinding>
+                                        </DataTrigger.Binding>
+
+                                        <Setter Property="Width" Value="20" />
+                                        <Setter Property="Height" Value="20" />
+                                        <Setter Property="Opacity" Value="1" />
+                                        <Setter Property="BorderThickness" Value="1" />
+                                    </DataTrigger>
+
+                                </Style.Triggers>
+
+                            </Style>
+                        </Border.Style>
+                    </Border>
+                </DataTemplate>
+
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
 
 
         <!--  control buttons  -->
@@ -129,7 +180,7 @@
                     VerticalAlignment="Bottom"
                     FontFamily="pack://application:,,,/Assets/Fonts/#Khula Regular"
                     FontSize="75"
-                    Foreground="#fff"
+                    Foreground="#69DFFA"
                     Text="{DynamicResource welcome_str_bottom}" />
             </StackPanel>
 
