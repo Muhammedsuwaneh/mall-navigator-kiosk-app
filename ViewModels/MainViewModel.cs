@@ -17,6 +17,7 @@ namespace MallMapKiosk.ViewModels
 {
     public enum AppLanguage { EN, TR, AR }
     public enum Utilities { Stores, DiningRoom, Toilet, EmergencyExit }
+    public enum Scaling { ZoomIn, ZoomOut, FullScreen }
 
     public class MainViewModel : ViewModelBase, IMainViewModel
     {
@@ -52,6 +53,20 @@ namespace MallMapKiosk.ViewModels
                 {
                     _selectedLanguage = value;
                     OnPropertyChanged(nameof(SelectedLanguage));
+                }
+            }
+        }
+
+        private Scaling _scaling = Scaling.ZoomIn;
+        public Scaling Scaling
+        {
+            get => _scaling;
+            set
+            {
+                if (_scaling != value)
+                {
+                    _scaling = value;
+                    OnPropertyChanged(nameof(Scaling));
                 }
             }
         }
@@ -93,6 +108,29 @@ namespace MallMapKiosk.ViewModels
                 return _languageButtonCommand;
             }
         }
+
+        private ICommand _scaleButtonCommand;
+        public ICommand ScaleButtonCommand
+        {
+            get
+            {
+
+               if(_scaleButtonCommand == null)
+                    _scaleButtonCommand = new RelayCommand<string>(OnScaleButtonTouched);
+
+                return _scaleButtonCommand;
+            }   }
+
+        private void OnScaleButtonTouched(string param)
+        {
+            Scaling = Enum.Parse<Scaling>(param);
+
+            /*switch ()
+            {
+               
+            }*/
+        }
+    
 
         private void OnLanguageButtonTouched(string param)
         {

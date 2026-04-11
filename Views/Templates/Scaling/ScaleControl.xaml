@@ -1,0 +1,91 @@
+﻿<UserControl
+    x:Class="MallMapKiosk.Views.Templates.Scaling.ScaleControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:c="clr-namespace:MallMapKiosk.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:local="clr-namespace:MallMapKiosk.Views.Templates.Scaling"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="200"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <c:ScaleToOpacityConverter x:Key="ScaleToOpacityConverter" />
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="10" />
+            <RowDefinition />
+            <RowDefinition Height="10" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+
+        <!--  zoom in  -->
+        <Border
+            Width="75"
+            Height="75"
+            Background="#69DFFA"
+            Cursor="Hand"
+            Opacity="{Binding Scaling, Converter={StaticResource ScaleToOpacityConverter}, ConverterParameter=ZoomIn}">
+
+            <Image
+                Width="30"
+                Height="30"
+                Source="/Assets/Images/Plus Math.png" />
+
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDown">
+                    <i:InvokeCommandAction Command="{Binding ScaleButtonCommand}" CommandParameter="ZoomIn" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Border>
+
+        <!--  zoom out  -->
+        <Border
+            Grid.Row="2"
+            Width="75"
+            Height="75"
+            Background="#69DFFA"
+            Cursor="Hand"
+            Opacity="{Binding Scaling, Converter={StaticResource ScaleToOpacityConverter}, ConverterParameter=ZoomOut}">
+
+            <Image
+                Width="30"
+                Height="30"
+                Source="/Assets/Images/Subtract.png" />
+
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDown">
+                    <i:InvokeCommandAction Command="{Binding ScaleButtonCommand}" CommandParameter="ZoomOut" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Border>
+
+        <!--  fullscreen  -->
+        <Border
+            Grid.Row="4"
+            Width="75"
+            Height="75"
+            Background="#69DFFA"
+            Cursor="Hand"
+            Opacity="{Binding Scaling, Converter={StaticResource ScaleToOpacityConverter}, ConverterParameter=FullScreen}">
+
+            <Image
+                Width="50"
+                Height="50"
+                Source="/Assets/Images/Enlarge.png" />
+
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDown">
+                    <i:InvokeCommandAction Command="{Binding ScaleButtonCommand}" CommandParameter="FullScreen" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Border>
+
+    </Grid>
+</UserControl>
