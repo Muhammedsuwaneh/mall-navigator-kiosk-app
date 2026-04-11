@@ -90,8 +90,8 @@
         <!--  - carousel tracker  -->
         <ItemsControl
             Grid.Row="3"
-            Grid.Column="0"
-            HorizontalAlignment="Center"
+            Grid.Column="1"
+            HorizontalAlignment="Left"
             VerticalAlignment="Center"
             Panel.ZIndex="3"
             ItemsSource="{Binding Media}">

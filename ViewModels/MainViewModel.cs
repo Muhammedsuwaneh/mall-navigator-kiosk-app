@@ -16,7 +16,7 @@ using System.Windows.Input;
 namespace MallMapKiosk.ViewModels
 {
     public enum AppLanguage { EN, TR, AR }
-    public enum Utilities { Stores, DiningRoom, Toilet, EmergencyExit }
+    public enum Utility { Stores, DiningRoom, RestRoom, EmergencyExit }
     public enum Scaling { ZoomIn, ZoomOut, FullScreen }
 
     public class MainViewModel : ViewModelBase, IMainViewModel
@@ -74,10 +74,10 @@ namespace MallMapKiosk.ViewModels
         private string _videoPath = string.Empty;
         public string VideoPath
         {
-            get => _videoPath; 
+            get => _videoPath;
             set
             {
-                if(_videoPath != value)
+                if (_videoPath != value)
                 {
                     _videoPath = value;
                     OnPropertyChanged(nameof(VideoPath));
@@ -102,9 +102,9 @@ namespace MallMapKiosk.ViewModels
         {
             get
             {
-                if(_languageButtonCommand == null)
+                if (_languageButtonCommand == null)
                     _languageButtonCommand = new RelayCommand<string>(OnLanguageButtonTouched);
-                
+
                 return _languageButtonCommand;
             }
         }
@@ -115,11 +115,44 @@ namespace MallMapKiosk.ViewModels
             get
             {
 
-               if(_scaleButtonCommand == null)
+                if (_scaleButtonCommand == null)
                     _scaleButtonCommand = new RelayCommand<string>(OnScaleButtonTouched);
 
                 return _scaleButtonCommand;
-            }   }
+            } 
+        }
+
+
+        private Utility _menuUtility = Utility.Stores;
+        private Utility MenuUtility
+        {
+            get => _menuUtility;
+            set
+            {
+                if (_menuUtility != value)
+                {
+                    _menuUtility = value;
+                    OnPropertyChanged(nameof(MenuUtility));
+                }
+            }
+        }
+
+        private ICommand _menuButtonCommand;
+        public ICommand MenuButtonCommand
+        {
+            get
+            {
+                if(_menuButtonCommand == null)
+                    _menuButtonCommand = new RelayCommand<string>(OnMenuButtonTouched);
+
+                return _menuButtonCommand;  
+            }
+        }
+
+        private void OnMenuButtonTouched(string param)
+        {
+            MenuUtility = Enum.Parse<Utility>(param);
+        }
 
         private void OnScaleButtonTouched(string param)
         {

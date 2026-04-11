@@ -1,12 +1,17 @@
-﻿using System;
+﻿using MallMapKiosk.ViewModels;
+using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;
-using MallMapKiosk.ViewModels;
 
 namespace MallMapKiosk.Converters
 {
-    public class LanguageToBrushConverter : IValueConverter
+    public class UtilityToBrushConverter : IValueConverter
     {
         public Brush ActiveBrush { get; set; } = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#69DFFA"));
 
@@ -14,11 +19,11 @@ namespace MallMapKiosk.Converters
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is AppLanguage selected && parameter is string param)
+            if (value is Utility utility && parameter is string param)
             {
-                if (Enum.TryParse<AppLanguage>(param, out var lang))
+                if (Enum.TryParse<Utility>(param, out var _utility))
                 {
-                    return selected == lang ? ActiveBrush : InactiveBrush;
+                    return utility == _utility ? ActiveBrush : InactiveBrush;
                 }
             }
 

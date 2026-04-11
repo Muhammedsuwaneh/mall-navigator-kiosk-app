@@ -12,5 +12,6 @@ namespace MallMapKiosk.ViewModels.Contracts
         public ICommand MediaEndedCommand { get; }
         public ICommand LanguageButtonCommand { get; }
         public ICommand ScaleButtonCommand { get; }
+        public ICommand MenuButtonCommand { get; }
     }
 }
