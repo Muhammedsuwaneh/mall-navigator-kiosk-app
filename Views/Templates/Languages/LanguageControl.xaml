@@ -37,6 +37,7 @@
             <TextBlock
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
+                FontFamily="pack://application:,,,/Assets/Fonts/#Kodchasan Regular"
                 FontSize="25"
                 Foreground="#fff"
                 Text="EN"
@@ -64,6 +65,7 @@
             <TextBlock
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
+                FontFamily="pack://application:,,,/Assets/Fonts/#Kodchasan Regular"
                 FontSize="25"
                 Foreground="#fff"
                 Text="TR"
@@ -92,6 +94,7 @@
             <TextBlock
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
+                FontFamily="pack://application:,,,/Assets/Fonts/#Kodchasan Regular"
                 FontSize="25"
                 Foreground="#fff"
                 Text="AR"

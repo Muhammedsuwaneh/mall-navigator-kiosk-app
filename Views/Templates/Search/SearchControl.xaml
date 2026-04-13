@@ -43,6 +43,7 @@
                 <TextBlock
                     Margin="7,0,0,0"
                     VerticalAlignment="Center"
+                    FontFamily="pack://application:,,,/Assets/Fonts/#Kodchasan Regular"
                     FontSize="20"
                     Foreground="Gray"
                     IsHitTestVisible="False"

@@ -20,6 +20,7 @@
 
     <Page.Resources>
         <c:IndexToBoolConverter x:Key="IndexToBoolConverter" />
+        <c:ScaleToVisiblityConverter x:Key="ScaleToVisiblityConverter" />
     </Page.Resources>
 
     <Grid>
@@ -67,7 +68,7 @@
             VerticalAlignment="Center"
             Panel.ZIndex="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="350" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="750" />
                 <ColumnDefinition Width="*" />
@@ -169,25 +170,25 @@
             <!--  some title  -->
             <StackPanel Grid.Column="2" Margin="0,-100,30,0">
                 <TextBlock
-                    Margin="0,20,0,0"
+                    Margin="0,10,0,0"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
-                    FontFamily="pack://application:,,,/Assets/Fonts/#Khula Regular"
+                    FontFamily="pack://application:,,,/Assets/Fonts/#Kodchasan Regular"
                     FontSize="75"
                     Foreground="#fff"
                     Text="{DynamicResource welcome_str_top}" />
                 <Rectangle
                     Width="400"
                     Height="1"
-                    Margin="0,-15,0,0"
+                    Margin="0,13,0,0"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top"
                     Fill="#69DFFA" />
                 <TextBlock
-                    Margin="0,-15,0,0"
+                    Margin="0,5,0,0"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
-                    FontFamily="pack://application:,,,/Assets/Fonts/#Khula Regular"
+                    FontFamily="pack://application:,,,/Assets/Fonts/#Kodchasan Regular"
                     FontSize="75"
                     Foreground="#69DFFA"
                     Text="{DynamicResource welcome_str_bottom}" />

@@ -8,26 +8,32 @@
     <UseWPF>true</UseWPF>
     <Platforms>AnyCPU;x64</Platforms>
     <ApplicationIcon>Assets\Images\logo.ico</ApplicationIcon>
+    <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Assets\Fonts\Khula-Regular.ttf" />
+    <None Remove="Assets\Fonts\Kodchasan-Bold.ttf" />
+    <None Remove="Assets\Fonts\Kodchasan-Light.ttf" />
+    <None Remove="Assets\Fonts\Kodchasan-Regular.ttf" />
     <None Remove="Assets\Images\DiningRoom.png" />
+    <None Remove="Assets\Images\dining_pin.png" />
     <None Remove="Assets\Images\EmergencyExit.png" />
     <None Remove="Assets\Images\Enlarge.png" />
+    <None Remove="Assets\Images\exits.png" />
     <None Remove="Assets\Images\logo.ico" />
-    <None Remove="Assets\Images\logo.png" />
     <None Remove="Assets\Images\map.png" />
     <None Remove="Assets\Images\Plus Math.png" />
+    <None Remove="Assets\Images\restroom_pin.png" />
     <None Remove="Assets\Images\search.png" />
     <None Remove="Assets\Images\Shop.png" />
+    <None Remove="Assets\Images\stores_pin.png" />
     <None Remove="Assets\Images\Subtract.png" />
     <None Remove="Assets\Images\Toilet.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Assets\Gifs\" />
-    <Folder Include="Models\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,13 +48,28 @@
     <Resource Include="Assets\Fonts\Khula-Regular.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Fonts\Kodchasan-Bold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Fonts\Kodchasan-Light.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Fonts\Kodchasan-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Images\DiningRoom.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\dining_pin.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Images\EmergencyExit.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Images\Enlarge.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\exits.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Images\logo.ico">
@@ -63,10 +84,16 @@
     <Resource Include="Assets\Images\Plus Math.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Images\restroom_pin.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Images\search.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Images\Shop.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\stores_pin.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Images\Subtract.png">
@@ -75,6 +102,13 @@
     <Resource Include="Assets\Images\Toilet.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Assets\Images\logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

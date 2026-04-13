@@ -59,10 +59,10 @@
                         Margin="7,0"
                         Source="/Assets/Images/Shop.png" />
                     <TextBlock
-                        Margin="2,10,0,0"
+                        Margin="5,3,0,0"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        FontFamily="pack://application:,,,/Assets/Fonts/#Khula Regular"
+                        FontFamily="pack://application:,,,/Assets/Fonts/#Kodchasan Regular"
                         FontSize="23"
                         Foreground="#fff"
                         Text="{DynamicResource store_str}" />
@@ -98,13 +98,13 @@
                     <Image
                         Width="40"
                         Height="40"
-                        Margin="7,0"
+                        Margin="5,0"
                         Source="/Assets/Images/DiningRoom.png" />
                     <TextBlock
-                        Margin="2,10,0,0"
+                        Margin="2,10,0,7"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        FontFamily="pack://application:,,,/Assets/Fonts/#Khula Regular"
+                        FontFamily="pack://application:,,,/Assets/Fonts/#Kodchasan Regular"
                         FontSize="23"
                         Foreground="#fff"
                         Text="{DynamicResource dining_str}" />
@@ -143,10 +143,10 @@
                         Margin="7,0"
                         Source="/Assets/Images/Toilet.png" />
                     <TextBlock
-                        Margin="2,10,0,0"
+                        Margin="2,10,0,7"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        FontFamily="pack://application:,,,/Assets/Fonts/#Khula Regular"
+                        FontFamily="pack://application:,,,/Assets/Fonts/#Kodchasan Regular"
                         FontSize="23"
                         Foreground="#fff"
                         Text="{DynamicResource restrooms_str}" />
@@ -182,13 +182,13 @@
                     <Image
                         Width="40"
                         Height="40"
-                        Margin="7,0"
+                        Margin="10,0"
                         Source="/Assets/Images/EmergencyExit.png" />
                     <TextBlock
-                        Margin="2,10,0,0"
+                        Margin="2,10,0,7"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        FontFamily="pack://application:,,,/Assets/Fonts/#Khula Regular"
+                        FontFamily="pack://application:,,,/Assets/Fonts/#Kodchasan Regular"
                         FontSize="23"
                         Foreground="#fff"
                         Text="{DynamicResource exit_str}" />

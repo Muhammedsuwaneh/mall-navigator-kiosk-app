@@ -2,19 +2,26 @@
     x:Class="MallMapKiosk.Views.Templates.Map.MapControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:c="clr-namespace:MallMapKiosk.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:MallMapKiosk.Views.Templates.Map"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="600"
     d:DesignWidth="1500"
     mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <c:MultiplyConverter x:Key="MultiplyConverter" />
+        <c:PinIconConverter x:Key="PinIconConverter" />
+    </UserControl.Resources>
+
     <Grid>
         <!--  Zoomable Container  -->
         <Border ClipToBounds="True">
             <Grid x:Name="MapContainer" RenderTransformOrigin="0.5,0.5">
 
                 <Grid.RenderTransform>
-                    <ScaleTransform x:Name="MapScaleTransform" ScaleX="1" ScaleY="1" />
+                    <ScaleTransform x:Name="MapScaleTransform" ScaleX="{Binding ScaleX}" ScaleY="{Binding ScaleY}" />
                 </Grid.RenderTransform>
 
                 <!--  Map  -->
@@ -22,9 +29,58 @@
                     <ImageBrush ImageSource="/Assets/Images/Map.png" Stretch="Uniform" />
                 </Grid.Background>
 
-                <!--  - coordinates  -->
 
-                <!--  - names  -->
+                <!--  Pins Layer  -->
+                <ItemsControl ItemsSource="{Binding VisiblePins}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <Canvas />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+
+                    <ItemsControl.ItemContainerStyle>
+                        <Style>
+                            <Setter Property="Canvas.Left">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{StaticResource MultiplyConverter}">
+                                        <Binding Path="X" />
+                                        <Binding ElementName="MapContainer" Path="ActualWidth" />
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+
+                            <Setter Property="Canvas.Top">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{StaticResource MultiplyConverter}">
+                                        <Binding Path="Y" />
+                                        <Binding ElementName="MapContainer" Path="ActualHeight" />
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
+
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Image
+                                    Width="50"
+                                    Height="50"
+                                    Source="{Binding Category, Converter={StaticResource PinIconConverter}}"
+                                    ToolTip="{Binding Name}" />
+                                <TextBlock
+                                    Margin="0,20,0,0"
+                                    HorizontalAlignment="Center"
+                                    FontFamily="pack://application:,,,/Assets/Fonts/#Kodchasan Bold"
+                                    FontSize="10"
+                                    FontWeight="Bold"
+                                    Foreground="#1E1E1E"
+                                    Text="{Binding Name}"
+                                    TextAlignment="Center" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
 
             </Grid>
         </Border>
