@@ -16,7 +16,7 @@ using System.Windows.Input;
 namespace MallMapKiosk.ViewModels
 {
     public enum AppLanguage { EN, TR, AR }
-    public enum Utility { Stores, DiningRoom, RestRoom, EmergencyExit }
+    public enum Utility { None, Stores, DiningRoom, RestRoom, EmergencyExit }
     public enum Scaling { ZoomIn, ZoomOut, FullScreen }
 
     public class MainViewModel : ViewModelBase, IMainViewModel
@@ -123,8 +123,8 @@ namespace MallMapKiosk.ViewModels
         }
 
 
-        private Utility _menuUtility = Utility.Stores;
-        private Utility MenuUtility
+        private Utility _menuUtility;
+        public Utility MenuUtility
         {
             get => _menuUtility;
             set
@@ -151,6 +151,12 @@ namespace MallMapKiosk.ViewModels
 
         private void OnMenuButtonTouched(string param)
         {
+            if(param == MenuUtility.ToString())
+            {
+                MenuUtility = 0; // Reset to default or "none" state
+                return;
+            }
+
             MenuUtility = Enum.Parse<Utility>(param);
         }
 
@@ -158,10 +164,15 @@ namespace MallMapKiosk.ViewModels
         {
             Scaling = Enum.Parse<Scaling>(param);
 
-            /*switch ()
+            switch (Scaling)
             {
-               
-            }*/
+               case Scaling.ZoomIn:
+                    break;
+                case Scaling.ZoomOut:
+                    break;
+                case Scaling.FullScreen:
+                    break;
+            }
         }
     
 

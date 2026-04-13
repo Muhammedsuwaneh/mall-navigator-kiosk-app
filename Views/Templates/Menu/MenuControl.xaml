@@ -7,8 +7,8 @@
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:local="clr-namespace:MallMapKiosk.Views.Templates.Menu"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DesignHeight="80"
-    d:DesignWidth="1000"
+    d:DesignHeight="85"
+    d:DesignWidth="1030"
     mc:Ignorable="d">
 
     <UserControl.Resources>
@@ -19,13 +19,13 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="30" />
-                <ColumnDefinition Width="220" />
+                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="10" />
-                <ColumnDefinition Width="250" />
+                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="10" />
-                <ColumnDefinition Width="220" />
+                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="10" />
-                <ColumnDefinition Width="220" />
+                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="30" />
             </Grid.ColumnDefinitions>
 
@@ -41,7 +41,8 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 BorderBrush="{Binding MenuUtility, Converter={StaticResource UtilityToBrushConverter}, ConverterParameter=Stores}"
-                BorderThickness="0,0,0,1"
+                BorderThickness="0,0,0,3"
+                CornerRadius="10"
                 Cursor="Hand">
                 <StackPanel Orientation="Horizontal">
 
@@ -82,7 +83,8 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 BorderBrush="{Binding MenuUtility, Converter={StaticResource UtilityToBrushConverter}, ConverterParameter=DiningRoom}"
-                BorderThickness="0,0,0,1"
+                BorderThickness="0,0,0,3"
+                CornerRadius="10"
                 Cursor="Hand">
                 <StackPanel Orientation="Horizontal">
 
@@ -123,7 +125,8 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 BorderBrush="{Binding MenuUtility, Converter={StaticResource UtilityToBrushConverter}, ConverterParameter=RestRoom}"
-                BorderThickness="0,0,0,1"
+                BorderThickness="0,0,0,3"
+                CornerRadius="10"
                 Cursor="Hand">
                 <StackPanel Orientation="Horizontal">
 
@@ -164,7 +167,8 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 BorderBrush="{Binding MenuUtility, Converter={StaticResource UtilityToBrushConverter}, ConverterParameter=EmergencyExit}"
-                BorderThickness="0,0,0,1"
+                BorderThickness="0,0,0,3"
+                CornerRadius="10"
                 Cursor="Hand">
                 <StackPanel Orientation="Horizontal">
 

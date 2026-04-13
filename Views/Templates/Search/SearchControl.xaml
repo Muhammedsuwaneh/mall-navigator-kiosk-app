@@ -19,10 +19,11 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="80" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="20" />
             </Grid.ColumnDefinitions>
 
             <Border
-                Grid.ColumnSpan="2"
+                Grid.ColumnSpan="3"
                 Padding="10"
                 Background="#fff"
                 CornerRadius="40"
@@ -45,7 +46,7 @@
                     FontSize="20"
                     Foreground="Gray"
                     IsHitTestVisible="False"
-                    Text="Search" />
+                    Text="Search for a utility" />
 
                 <TextBox
                     VerticalContentAlignment="Center"

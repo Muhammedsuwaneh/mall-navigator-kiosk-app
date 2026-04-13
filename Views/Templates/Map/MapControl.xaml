@@ -22,6 +22,10 @@
                     <ImageBrush ImageSource="/Assets/Images/Map.png" Stretch="Uniform" />
                 </Grid.Background>
 
+                <!--  - coordinates  -->
+
+                <!--  - names  -->
+
             </Grid>
         </Border>
 
