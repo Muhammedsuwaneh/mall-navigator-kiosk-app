@@ -22,6 +22,8 @@ namespace MallMapKiosk
             Loaded += MainWindow_Loaded;
             PreviewKeyDown += MainWindow_PreviewKeyDown;
             RegisterHotKeyAppExit(Key.Escape);
+
+            AudioController.PlaySound();
         }
 
         /// <summary>

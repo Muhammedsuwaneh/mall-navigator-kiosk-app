@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MallMapKiosk.Common.Utilities
 {
-    public class DataLayer
+    public sealed class DataLayer
     {
         public static List<MapPin> allPins = new();
         private static AppLanguage _selectedLanguage;
