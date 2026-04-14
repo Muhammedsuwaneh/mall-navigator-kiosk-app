@@ -12,7 +12,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\Fonts\Khula-Regular.ttf" />
     <None Remove="Assets\Fonts\Kodchasan-Bold.ttf" />
     <None Remove="Assets\Fonts\Kodchasan-Light.ttf" />
     <None Remove="Assets\Fonts\Kodchasan-Regular.ttf" />
@@ -21,8 +20,10 @@
     <None Remove="Assets\Images\EmergencyExit.png" />
     <None Remove="Assets\Images\Enlarge.png" />
     <None Remove="Assets\Images\exits.png" />
+    <None Remove="Assets\Images\kiosk.png" />
     <None Remove="Assets\Images\logo.ico" />
     <None Remove="Assets\Images\map.png" />
+    <None Remove="Assets\Images\others.png" />
     <None Remove="Assets\Images\Plus Math.png" />
     <None Remove="Assets\Images\restroom_pin.png" />
     <None Remove="Assets\Images\search.png" />
@@ -45,9 +46,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\Fonts\Khula-Regular.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Assets\Fonts\Kodchasan-Bold.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -72,6 +70,9 @@
     <Resource Include="Assets\Images\exits.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Images\kiosk.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Images\logo.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -79,6 +80,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Images\map.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\others.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Images\Plus Math.png">

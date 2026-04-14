@@ -9,5 +9,9 @@
     <sys:String x:Key="exit_str">المخارج</sys:String>
     <sys:String x:Key="welcome_str_top">المول</sys:String>
     <sys:String x:Key="welcome_str_bottom">الاتجاهات</sys:String>
+    <sys:String x:Key="search_str">بحث</sys:String>
+    <sys:String x:Key="kiosk_str">كشك</sys:String>
+    <sys:String x:Key="others_str">ترفيه</sys:String>
+
 
 </ResourceDictionary>

@@ -9,5 +9,8 @@
     <sys:String x:Key="exit_str">EXITS</sys:String>
     <sys:String x:Key="welcome_str_top">MALL</sys:String>
     <sys:String x:Key="welcome_str_bottom">DIRECTIONS</sys:String>
+    <sys:String x:Key="search_str">Search</sys:String>
+    <sys:String x:Key="kiosk_str">Kiosk</sys:String>
+    <sys:String x:Key="others_str">LEISURE</sys:String>
 
 </ResourceDictionary>

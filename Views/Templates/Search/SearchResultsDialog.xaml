@@ -1,0 +1,130 @@
+﻿<UserControl
+    x:Class="MallMapKiosk.Views.Templates.Search.SearchResultsDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="500"
+    d:DesignWidth="750"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+
+        <!--  Dialog  -->
+        <Border
+            Grid.RowSpan="3"
+            Width="750"
+            Height="420"
+            Padding="20"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="#1E1E1E"
+            BorderBrush="#69DFFA"
+            BorderThickness="1"
+            CornerRadius="25"
+            Opacity=".8">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="15" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid Margin="15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontSize="25"
+                        FontWeight="SemiBold"
+                        Foreground="White"
+                        Text="Search Results" />
+
+                    <Button
+                        Grid.Column="1"
+                        Width="35"
+                        Height="35"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Command="{Binding CloseSearchDialogCommand}"
+                        Cursor="Hand">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontSize="18"
+                            Foreground="White"
+                            Text="✕" />
+                    </Button>
+                </Grid>
+
+                <ListView
+                    Grid.Row="2"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    ItemsSource="{Binding DataContext.FilteredPins, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                    ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                    ScrollViewer.VerticalScrollBarVisibility="Hidden">
+
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Padding" Value="0" />
+                            <Setter Property="Margin" Value="0,0,0,10" />
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="BorderThickness" Value="0" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border
+                                Width="700"
+                                Padding="15"
+                                Background="#2A2A2A"
+                                CornerRadius="15"
+                                Cursor="Hand">
+
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseDown">
+                                        <i:InvokeCommandAction Command="{Binding DataContext.FilteredItemCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding Name}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <!--  Icon  -->
+                                    <Ellipse
+                                        Width="30"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Fill="#69DFFA" />
+
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        VerticalAlignment="Center"
+                                        FontSize="18"
+                                        FontWeight="SemiBold"
+                                        Foreground="White"
+                                        Text="{Binding Name}" />
+
+                                    <!--  Text  -->
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+
+                </ListView>
+
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

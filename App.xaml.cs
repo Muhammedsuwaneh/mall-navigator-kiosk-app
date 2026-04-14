@@ -1,4 +1,5 @@
 ﻿using MallMapKiosk.Common.Utilities;
+using MallMapKiosk.Common.Window;
 using MallMapKiosk.ViewModels;
 using MallMapKiosk.ViewModels.Contracts;
 using MallMapKiosk.Views.Pages;
@@ -36,6 +37,7 @@ namespace MallMapKiosk
             await AppHost!.StartAsync();
 
             LanguageUtility.ToggleApplicationLanguage("en");
+            TaskBar.HideTaskbar();
 
             var mainWindow = AppHost.Services.GetRequiredService<MainWindow>();
             mainWindow.Show();

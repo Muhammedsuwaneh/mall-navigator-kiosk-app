@@ -30,6 +30,8 @@ namespace MallMapKiosk.Converters
             return InactiveBrush;
         }
 
+        private SolidColorBrush GetBrush(string colorString) => new SolidColorBrush((Color)ColorConverter.ConvertFromString(colorString));
+
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();

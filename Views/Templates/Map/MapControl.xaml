@@ -12,7 +12,7 @@
 
     <UserControl.Resources>
         <c:MultiplyConverter x:Key="MultiplyConverter" />
-        <c:PinIconConverter x:Key="PinIconConverter" />
+        <c:PinBrushConverter x:Key="PinBrushConverter" />
     </UserControl.Resources>
 
     <Grid>
@@ -29,6 +29,14 @@
                     <ImageBrush ImageSource="/Assets/Images/Map.png" Stretch="Uniform" />
                 </Grid.Background>
 
+                <Image
+                    x:Name="kiosk_image"
+                    Width="50"
+                    Height="50"
+                    Margin="700,125,770,473"
+                    VerticalAlignment="Top"
+                    Stretch="UniformToFill"
+                    Source="/Assets/Images/kiosk.png" />
 
                 <!--  Pins Layer  -->
                 <ItemsControl ItemsSource="{Binding VisiblePins}">
@@ -62,22 +70,41 @@
 
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel>
-                                <Image
-                                    Width="50"
-                                    Height="50"
-                                    Source="{Binding Category, Converter={StaticResource PinIconConverter}}"
-                                    ToolTip="{Binding Name}" />
-                                <TextBlock
-                                    Margin="0,20,0,0"
-                                    HorizontalAlignment="Center"
-                                    FontFamily="pack://application:,,,/Assets/Fonts/#Kodchasan Bold"
-                                    FontSize="10"
-                                    FontWeight="Bold"
-                                    Foreground="#1E1E1E"
-                                    Text="{Binding Name}"
-                                    TextAlignment="Center" />
-                            </StackPanel>
+
+                            <Grid Margin="15" Cursor="Hand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Border
+                                    Grid.Column="1"
+                                    MaxWidth="150"
+                                    MaxHeight="50"
+                                    Margin="0,0,0,10"
+                                    Padding="12"
+                                    Panel.ZIndex="3"
+                                    Background="{Binding Category, Converter={StaticResource PinBrushConverter}}"
+                                    CornerRadius="12">
+
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        FontFamily="pack://application:,,,/Assets/Fonts/#Kodchasan Bold"
+                                        Foreground="#fff"
+                                        Text="{Binding Name}"
+                                        TextWrapping="Wrap" />
+                                </Border>
+
+                                <Polygon
+                                    Grid.Column="1"
+                                    Margin="15,0,0,0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Bottom"
+                                    Fill="{Binding Category, Converter={StaticResource PinBrushConverter}}"
+                                    Points="0,0 20,0 10,10" />
+
+                            </Grid>
+
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
@@ -85,5 +112,8 @@
             </Grid>
         </Border>
 
+
     </Grid>
 </UserControl>
+
+

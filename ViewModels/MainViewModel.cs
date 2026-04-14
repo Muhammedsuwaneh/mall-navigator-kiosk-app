@@ -3,21 +3,13 @@ using MallMapKiosk.Commands.Utilities;
 using MallMapKiosk.Common.Utilities;
 using MallMapKiosk.Models;
 using MallMapKiosk.ViewModels.Contracts;
-using MallMapKiosk.Views.Templates.Map;
-using MallMapKiosk.Views.Templates.Menu;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace MallMapKiosk.ViewModels
 {
     public enum AppLanguage { EN, TR, AR }
-    public enum Utility { None, Stores, DiningRoom, RestRoom, EmergencyExit }
+    public enum Utility { None, Stores, DiningRoom, RestRoom, EmergencyExit, Leisure }
     public enum Scaling { ZoomIn, ZoomOut, FullScreen }
 
     public class MainViewModel : ViewModelBase, IMainViewModel
@@ -157,8 +149,8 @@ namespace MallMapKiosk.ViewModels
         {
             if(param == MenuUtility.ToString())
             {
-                MenuUtility = 0; 
-                VisiblePins.Clear();
+                MenuUtility = 0;
+                restore();
                 return;
             }
 
@@ -168,22 +160,31 @@ namespace MallMapKiosk.ViewModels
 
         private void OnScaleButtonTouched(string param)
         {
-            Scaling = Enum.Parse<Scaling>(param);
-
-            switch (Scaling)
+            if(param == "FullScreen" && Scaling == Scaling.FullScreen)
             {
-               case Scaling.ZoomIn:
-                    ZoomIn();
-                    break;
-                case Scaling.ZoomOut:
-                    ZoomOut();
-                    break;
-                case Scaling.FullScreen:
-                    FullScreen();
-                    break;
+                // exit full screen
+                Scaling = Scaling.ZoomIn;
+                ExitFullScreen();
+                return;
+            }
+            else
+            {
+                Scaling = Enum.Parse<Scaling>(param);
+
+                switch (Scaling)
+                {
+                    case Scaling.ZoomIn:
+                        ZoomIn();
+                        break;
+                    case Scaling.ZoomOut:
+                        ZoomOut();
+                        break;
+                    case Scaling.FullScreen:
+                        FullScreen();
+                        break;
+                }
             }
         }
-    
 
         private void OnLanguageButtonTouched(string param)
         {
@@ -192,6 +193,9 @@ namespace MallMapKiosk.ViewModels
 
             SelectedLanguage = Enum.Parse<AppLanguage>(param);
             LanguageUtility.ToggleApplicationLanguage(param.ToLower());
+
+            DataLayer.InitPins(SelectedLanguage);
+            UpdateVisiblePins();
         }
 
         private void OnMediaEnded(object obj)
@@ -205,85 +209,40 @@ namespace MallMapKiosk.ViewModels
             OnPropertyChanged(nameof(CurrentMediaIndex));
         }
 
-
-        #region Pins
         public ObservableCollection<MapPin> VisiblePins { get; set; } = new();
 
-        private List<MapPin> _allPins = new();
 
         private void InitializeViewModel()
         {
             _videoPath = FileRetriever.GetFile("assets\\", Media[_currentMediaIndex]);
-            InitPins();
-        }
-
-        private void InitPins()
-        {
-            _allPins = new List<MapPin>
-            {
-                // STORES
-                new MapPin { X = 0, Y = 0, Category = "Stores", Name = "Store 1" },
-                new MapPin { X = 0, Y = 0, Category = "Stores", Name = "Store 2" },
-                new MapPin { X = 0, Y = 0, Category = "Stores", Name = "Store 3" },
-                new MapPin { X = 0, Y = 0, Category = "Stores", Name = "Store 4" },
-                new MapPin { X = 0, Y = 0, Category = "Stores", Name = "Store 5" },
-                new MapPin { X = 0, Y = 0, Category = "Stores", Name = "Store 6" },
-                new MapPin { X = 0, Y = 0, Category = "Stores", Name = "Store 7" },
-                new MapPin { X = 0, Y = 0, Category = "Stores", Name = "Store 8" },
-                new MapPin { X = 0, Y = 0, Category = "Stores", Name = "Store 9" },
-                new MapPin { X = 0, Y = 0, Category = "Stores", Name = "Store 10" },
-                new MapPin { X = 0, Y = 0, Category = "Stores", Name = "Store 11" },
-                new MapPin { X = 0, Y = 0, Category = "Stores", Name = "Store 12" },
-                new MapPin { X = 0, Y = 0, Category = "Stores", Name = "Store 13" },
-                new MapPin { X = 0, Y = 0, Category = "Stores", Name = "Store 14" },
-                new MapPin { X = 0, Y = 0, Category = "Stores", Name = "Store 15" },
-
-                // DINING - done
-                new MapPin { X = 0.3, Y = 0.6, Category = "DiningRoom", Name = "" },
-                new MapPin { X = 0.6, Y = 0.4, Category = "DiningRoom", Name = "" },
-                new MapPin { X = 0.27, Y = 0.67, Category = "DiningRoom", Name = "Kebab\nSpot" },
-                new MapPin { X = 0.3, Y = 0.7, Category = "DiningRoom", Name = "Crunchy\nChicken" },
-                new MapPin { X = 0.31, Y = 0.7, Category = "DiningRoom", Name = "Starbucks" },
-                new MapPin { X = 0.37, Y = 0.7, Category = "DiningRoom", Name = "Rusty Pub" },
-                new MapPin { X = 0.49, Y = 0.7, Category = "DiningRoom", Name = "PizzaHot" },
-                new MapPin { X = 0.52, Y = 0.7, Category = "DiningRoom", Name = "Popeyes" },
-                new MapPin { X = 0.55, Y = 0.7, Category = "DiningRoom", Name = "KFC" },
-                new MapPin { X = 0.59, Y = 0.7, Category = "DiningRoom", Name = "McDonalds" },
-                new MapPin { X = 0.63, Y = 0.7, Category = "DiningRoom", Name = "  Dennis\nDines" },
-                                 
-                // RESTROOMS - done
-                new MapPin { X = 0.85, Y = 0.03, Category = "RestRoom", Name = "" },
-                new MapPin { X = 0.83, Y = 0.6, Category = "RestRoom", Name = "" },
-                new MapPin { X = 0.75, Y = 0.8, Category = "RestRoom", Name = "" },
-                new MapPin { X = 0.21, Y = 0.35, Category = "RestRoom", Name = "" },
-                new MapPin { X = 0.14, Y = 0.4, Category = "RestRoom", Name = "" },
-                new MapPin { X = 0.18, Y = 0.71, Category = "RestRoom", Name = "" },
-
-                // EXITS - done
-                new MapPin { X = 0.5, Y = 0.07, Category = "EmergencyExit", Name = "" },
-                new MapPin { X = 0.22, Y = 0.7, Category = "EmergencyExit", Name = "" },
-                new MapPin { X = 0.7, Y = 0.8, Category = "EmergencyExit", Name = "" },
-            };
-
+            DataLayer.InitPins(SelectedLanguage);
             UpdateVisiblePins();
         }
 
         private void UpdateVisiblePins()
         {
-            VisiblePins.Clear();
-
             if (MenuUtility == Utility.None)
+            {
+                restore();
                 return;
+            }
 
+            VisiblePins.Clear();
             string category = MenuUtility.ToString();
 
-            var pins = _allPins.Where(p => p.Category == category);
+            var pins = DataLayer.allPins.Where(p => p.Category == category);
 
             foreach (var pin in pins)
                 VisiblePins.Add(pin);
         }
 
-        #endregion
+        private void restore()
+        {
+            VisiblePins.Clear();
+
+            foreach (var pin in DataLayer.allPins)
+                VisiblePins.Add(pin);
+        }
 
         #region Scaling 
 
@@ -292,6 +251,33 @@ namespace MallMapKiosk.ViewModels
         private const double MaxZoom = 1.05;
         private const double MinZoom = 0.8;
 
+        private double row = 3;
+        public double Row
+        {
+            get => row;
+            set
+            {
+                if (row != value)
+                {
+                    row = value;
+                    OnPropertyChanged(nameof(Row));
+                }
+            }
+        }
+
+        private double rowSpan = 1;
+        public double RowSpan
+        {
+            get => rowSpan;
+            set
+            {
+                if (rowSpan != value)
+                {
+                    rowSpan = value;
+                    OnPropertyChanged(nameof(RowSpan));
+                }
+            }
+        }
 
         private double _scaleX = 1.0;
         public double ScaleX
@@ -321,6 +307,24 @@ namespace MallMapKiosk.ViewModels
             }
         }
 
+        private void FullScreen()
+        {
+            _zoom += ZoomStep * 1.2;
+            ScaleX = _zoom;
+            ScaleY = _zoom;
+            row = 1;
+            rowSpan = 4;
+        }
+
+        private void ExitFullScreen()
+        {
+            _zoom = 1.0;
+            ScaleX = _zoom;
+            ScaleY = _zoom;
+            row = 3;
+            rowSpan = 1;
+        }
+
         private void ZoomIn()
         {
             if (_zoom < MaxZoom)
@@ -341,10 +345,125 @@ namespace MallMapKiosk.ViewModels
             }
         }
 
-        private void FullScreen()
+        #endregion
+
+        #region Search Filter
+
+        public ObservableCollection<MapPin> FilteredPins { get; set; } = new();
+
+        private bool _filtered = false;
+        public bool Filtered
         {
-            
+            get => _filtered;
+            set
+            {
+                if (_filtered != value)
+                {
+                    _filtered = value;
+                    OnPropertyChanged(nameof(Filtered));
+                }
+            }
         }
+
+        private bool _empty = true;
+        public bool EmptyParam
+        {
+            get => _empty;
+            set
+            {
+                if (_empty != value)
+                {
+                    _empty = value;
+                    OnPropertyChanged(nameof(EmptyParam));
+                }
+            }
+        }
+
+        private string _searchParam = "";
+        public string SearchParam
+        {
+            get => _searchParam;
+            set
+            {
+                if (_searchParam != value)
+                {
+                    _searchParam = value;
+                    OnPropertyChanged(nameof(SearchParam));
+                    OnSearchChanged();
+                }
+            }
+        }
+
+        private void OnSearchChanged()
+        {
+            if (MenuUtility != Utility.None) MenuUtility = Utility.None; // remove any active category
+
+            VisiblePins.Clear();
+            EmptyParam = string.IsNullOrWhiteSpace(_searchParam); // hide placeholder
+
+            if(EmptyParam)
+            {
+                FilteredPins.Clear();
+                Filtered = false;
+                return;
+            }
+
+            // filter common utilities
+            var filtered = DataLayer.allPins.Where(p => p.Name.Contains(_searchParam, StringComparison.InvariantCultureIgnoreCase)).ToList();
+
+            Filtered = filtered.Count() > 0;
+            FilteredPins.Clear();
+
+            if(filtered.Count() > 0)
+            {
+                foreach (var pin in filtered)
+                {
+                    FilteredPins.Add(pin);
+                }
+            }
+        }
+
+
+        private ICommand _closeSearchDialogCommand;
+        public ICommand CloseSearchDialogCommand
+        {
+            get
+            {
+                if (_closeSearchDialogCommand == null)
+                    _closeSearchDialogCommand = new RelayCommand<object>(OnCloseSearchDialog);
+                return _closeSearchDialogCommand;
+            }
+        }
+
+        private void OnCloseSearchDialog(object obj)
+        {
+            SearchParam = "";
+            Filtered = false;
+        }
+
+        private ICommand _filteredItemCommand;
+        public ICommand FilteredItemCommand
+        {
+            get
+            {
+                if(_filteredItemCommand == null)
+                    _filteredItemCommand = new RelayCommand<string>(OnFilteredItemSelected);
+                return _filteredItemCommand;
+            }
+        }
+
+        private void OnFilteredItemSelected(string utility)
+        {
+            VisiblePins.Clear();
+            var selectedPin = DataLayer.allPins.FirstOrDefault(p => p.Name == utility);
+
+            if (selectedPin != null)
+            {
+                VisiblePins.Add(selectedPin);
+                MenuUtility = Enum.Parse<Utility>(selectedPin.Category);
+            }
+        }
+
         #endregion
     }
 }

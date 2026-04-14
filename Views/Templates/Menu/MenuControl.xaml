@@ -8,11 +8,12 @@
     xmlns:local="clr-namespace:MallMapKiosk.Views.Templates.Menu"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="85"
-    d:DesignWidth="1030"
+    d:DesignWidth="1070"
     mc:Ignorable="d">
 
     <UserControl.Resources>
         <c:UtilityToBrushConverter x:Key="UtilityToBrushConverter" />
+        <c:PinBrushConverter x:Key="PinBrushConverter" />
     </UserControl.Resources>
 
     <Border>
@@ -23,6 +24,8 @@
                 <ColumnDefinition Width="10" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="240" />
+                <ColumnDefinition Width="10" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="10" />
                 <ColumnDefinition Width="*" />
@@ -30,7 +33,7 @@
             </Grid.ColumnDefinitions>
 
             <Border
-                Grid.ColumnSpan="9"
+                Grid.ColumnSpan="111"
                 Background="#69DFFA"
                 CornerRadius="40"
                 Opacity=".5" />
@@ -166,6 +169,49 @@
                 Padding="5"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
+                BorderBrush="{Binding MenuUtility, Converter={StaticResource UtilityToBrushConverter}, ConverterParameter=Leisure}"
+                BorderThickness="0,0,0,3"
+                CornerRadius="10"
+                Cursor="Hand">
+                <StackPanel Orientation="Horizontal">
+
+
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDown">
+                            <i:InvokeCommandAction Command="{Binding MenuButtonCommand}" CommandParameter="Leisure" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+
+                    <Image
+                        Width="40"
+                        Height="40"
+                        Margin="10,0"
+                        Source="/Assets/Images/others.png" />
+                    <TextBlock
+                        Margin="2,10,0,7"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontFamily="pack://application:,,,/Assets/Fonts/#Kodchasan Regular"
+                        FontSize="23"
+                        Foreground="#fff"
+                        Text="{DynamicResource others_str}" />
+
+                </StackPanel>
+            </Border>
+
+
+            <Rectangle
+                Grid.Column="8"
+                Width="3"
+                Height="50"
+                Fill="#fff"
+                Opacity=".7" />
+
+            <Border
+                Grid.Column="9"
+                Padding="5"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
                 BorderBrush="{Binding MenuUtility, Converter={StaticResource UtilityToBrushConverter}, ConverterParameter=EmergencyExit}"
                 BorderThickness="0,0,0,3"
                 CornerRadius="10"
@@ -195,6 +241,7 @@
 
                 </StackPanel>
             </Border>
+
 
 
         </Grid>

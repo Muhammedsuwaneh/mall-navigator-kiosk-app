@@ -13,6 +13,7 @@
 
     <UserControl.Resources>
         <c:ScaleToOpacityConverter x:Key="ScaleToOpacityConverter" />
+        <c:ScaleToVisiblityConverter x:Key="ScaleToVisiblityConverter" />
     </UserControl.Resources>
 
     <Grid>
@@ -31,7 +32,8 @@
             Height="75"
             Background="#69DFFA"
             Cursor="Hand"
-            Opacity="{Binding Scaling, Converter={StaticResource ScaleToOpacityConverter}, ConverterParameter=ZoomIn}">
+            Opacity="{Binding Scaling, Converter={StaticResource ScaleToOpacityConverter}, ConverterParameter=ZoomIn}"
+            Visibility="{Binding Scaling, Converter={StaticResource ScaleToVisiblityConverter}}">
 
             <Image
                 Width="30"
@@ -52,7 +54,8 @@
             Height="75"
             Background="#69DFFA"
             Cursor="Hand"
-            Opacity="{Binding Scaling, Converter={StaticResource ScaleToOpacityConverter}, ConverterParameter=ZoomOut}">
+            Opacity="{Binding Scaling, Converter={StaticResource ScaleToOpacityConverter}, ConverterParameter=ZoomOut}"
+            Visibility="{Binding Scaling, Converter={StaticResource ScaleToVisiblityConverter}}">
 
             <Image
                 Width="30"
