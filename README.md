@@ -32,9 +32,12 @@ Designed for large interactive displays, this system helps users easily explore 
 
 ![Screenshot](screenshots/Fullscreen.png)
 
-![Screenshot](screenshots/Shops.png)
+![Screenshot](screenshots/Stores.png)
+
+![Screenshot](screenshots/Dining.png)
 
 ![Screenshot](screenshots/Search.png)
+
 
 ## • Tech Stack
 
