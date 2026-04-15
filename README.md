@@ -5,6 +5,8 @@ Designed for large interactive displays, this system helps users easily explore 
 
 ![Screenshot](screenshots/MainWindow.png)
 
+![Screenshot](screenshots/Stores.png)
+
 ## • Features
 
 ### • Interactive Mall Map
@@ -28,7 +30,13 @@ Designed for large interactive displays, this system helps users easily explore 
 - Smooth UI rendering
 - Lightweight architecture
 
-## • Tech Stack
+![Screenshot](screenshots/Select1.png)
+
+![Screenshot](screenshots/Select2.png)
+
+![Screenshot](screenshots/Search.png)
+
+![Screenshot](screenshots/Fullscreen.png)
 
 - Language: C#
 - Framework: .NET Core / .NET 8
