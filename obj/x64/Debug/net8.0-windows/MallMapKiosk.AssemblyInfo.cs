@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MallMapKiosk")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c1f55e3175cf15874aabaaae1eb01ea3fbb95e1d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f31a4b84ff13592bdfec9978cdff03379f5f6409")]
 [assembly: System.Reflection.AssemblyProductAttribute("MallMapKiosk")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MallMapKiosk")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
