@@ -17,7 +17,6 @@ namespace MallMapKiosk.Models
 
         public string Label { get; set; }        
         public string Floor { get; set; }       
-        public string WorkHours { get; set; }   
-        public string Description { get; set; }        
+        public string WorkHours { get; set; }     
     }
 }

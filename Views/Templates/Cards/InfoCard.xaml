@@ -100,15 +100,6 @@
                         Text="{Binding SelectedPin.WorkHours}" />
                 </StackPanel>
             </StackPanel>
-
-            <TextBlock
-                Grid.Row="3"
-                Margin="0,10,0,0"
-                FontSize="13"
-                Foreground="#444"
-                Text="{Binding SelectedPin.Description}"
-                TextWrapping="Wrap" />
-
         </Grid>
     </Border>
 </UserControl>

@@ -5,6 +5,7 @@ using MallMapKiosk.Models;
 using MallMapKiosk.ViewModels.Contracts;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace MallMapKiosk.ViewModels
@@ -491,6 +492,7 @@ namespace MallMapKiosk.ViewModels
             }
         }
 
+
         private void OnSearchChanged()
         {
             if (MenuUtility != Utility.None) MenuUtility = Utility.None; // remove any active category
@@ -498,9 +500,10 @@ namespace MallMapKiosk.ViewModels
             VisiblePins.Clear();
             EmptyParam = string.IsNullOrWhiteSpace(_searchParam); // hide placeholder
 
-            if(EmptyParam)
+            if (EmptyParam)
             {
                 FilteredPins.Clear();
+                UpdateVisiblePins();
                 Filtered = false;
                 return;
             }
@@ -516,10 +519,10 @@ namespace MallMapKiosk.ViewModels
                 foreach (var pin in filtered)
                 {
                     FilteredPins.Add(pin);
+                    VisiblePins.Add(pin);
                 }
             }
         }
-
 
         private ICommand _closeSearchDialogCommand;
         public ICommand CloseSearchDialogCommand
@@ -527,16 +530,14 @@ namespace MallMapKiosk.ViewModels
             get
             {
                 if (_closeSearchDialogCommand == null)
-                    _closeSearchDialogCommand = new RelayCommand<object>(OnCloseSearchDialog);
+                    _closeSearchDialogCommand = new RelayCommand<object>((obj) =>
+                    {
+                        Filtered = false;
+                    });
                 return _closeSearchDialogCommand;
             }
         }
 
-        private void OnCloseSearchDialog(object obj)
-        {
-            SearchParam = "";
-            Filtered = false;
-        }
 
         private ICommand _filteredItemCommand;
         public ICommand FilteredItemCommand
@@ -544,20 +545,19 @@ namespace MallMapKiosk.ViewModels
             get
             {
                 if(_filteredItemCommand == null)
-                    _filteredItemCommand = new RelayCommand<string>(OnFilteredItemSelected);
+                    _filteredItemCommand = new RelayCommand<string>((utility) =>
+                    {
+                        VisiblePins.Clear();
+                        var selectedPin = DataLayer.allPins.FirstOrDefault(p => p.Name == utility);
+
+                        if (selectedPin != null)
+                        {
+                            VisiblePins.Add(selectedPin);
+                            MenuUtility = Enum.Parse<Utility>(selectedPin.Category);
+                        }
+                    });
+
                 return _filteredItemCommand;
-            }
-        }
-
-        private void OnFilteredItemSelected(string utility)
-        {
-            VisiblePins.Clear();
-            var selectedPin = DataLayer.allPins.FirstOrDefault(p => p.Name == utility);
-
-            if (selectedPin != null)
-            {
-                VisiblePins.Add(selectedPin);
-                MenuUtility = Enum.Parse<Utility>(selectedPin.Category);
             }
         }
 
