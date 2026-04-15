@@ -4,6 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:c="clr-namespace:MallMapKiosk.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:ic="clr-namespace:MallMapKiosk.Views.Templates.Cards"
     xmlns:local="clr-namespace:MallMapKiosk.Views.Templates.Map"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="600"
@@ -13,6 +15,7 @@
     <UserControl.Resources>
         <c:MultiplyConverter x:Key="MultiplyConverter" />
         <c:PinBrushConverter x:Key="PinBrushConverter" />
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </UserControl.Resources>
 
     <Grid>
@@ -29,14 +32,25 @@
                     <ImageBrush ImageSource="/Assets/Images/Map.png" Stretch="Uniform" />
                 </Grid.Background>
 
+                <Canvas Panel.ZIndex="5">
+
+                    <ic:InfoCard
+                        Canvas.Left="{Binding CardX}"
+                        Canvas.Top="{Binding CardY}"
+                        Width="350"
+                        DataContext="{Binding}"
+                        Visibility="{Binding ShowCard, Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+                </Canvas>
+
                 <Image
                     x:Name="kiosk_image"
                     Width="50"
                     Height="50"
                     Margin="700,125,770,473"
                     VerticalAlignment="Top"
-                    Stretch="UniformToFill"
-                    Source="/Assets/Images/kiosk.png" />
+                    Source="/Assets/Images/kiosk.png"
+                    Stretch="UniformToFill" />
 
                 <!--  Pins Layer  -->
                 <ItemsControl ItemsSource="{Binding VisiblePins}">
@@ -86,6 +100,12 @@
                                     Panel.ZIndex="3"
                                     Background="{Binding Category, Converter={StaticResource PinBrushConverter}}"
                                     CornerRadius="12">
+
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseDown">
+                                            <i:InvokeCommandAction Command="{Binding DataContext.PinCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding Id}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
 
                                     <TextBlock
                                         HorizontalAlignment="Center"

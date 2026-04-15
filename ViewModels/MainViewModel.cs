@@ -4,6 +4,7 @@ using MallMapKiosk.Common.Utilities;
 using MallMapKiosk.Models;
 using MallMapKiosk.ViewModels.Contracts;
 using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Input;
 
 namespace MallMapKiosk.ViewModels
@@ -23,10 +24,101 @@ namespace MallMapKiosk.ViewModels
         };
 
 
-        #region current info
+        #region Info Card
+        private ICommand _pinCommand;
+        public ICommand PinCommand
+        {
+            get
+            {
+                if(_pinCommand == null) 
+                    _pinCommand = new RelayCommand<int>((Id) =>
+                    {
+                        SelectedPin = DataLayer.allPins.FirstOrDefault(p => p.Id == Id)!;
+
+                        if (SelectedPin == null)
+                        {
+                            MessageBox.Show("Utility data not found ....");
+                            return;
+                        }
+
+
+                        CardX = SelectedPin.X * 1500;
+                        CardY = SelectedPin.Y * 600;
+                        ShowCard = true;
+                    });
+
+                return _pinCommand;
+            }
+        }
+
+        private ICommand _closeCardCommand;
+        public ICommand CloseCardCommand
+        {
+            get
+            {
+                if (_closeCardCommand == null)
+                    _closeCardCommand = new RelayCommand<object>((obj) =>
+                    {
+                        ShowCard = false;
+                    });
+
+                return _closeCardCommand;
+            }
+        }
+
+        private bool _showCard = false;
+        public bool ShowCard
+        {
+            get => _showCard;
+            set
+            {
+                if (_showCard != value)
+                {
+                    _showCard = value;
+                    OnPropertyChanged(nameof(ShowCard));
+                }
+            }
+        }
+
+        private MapPin _selectedPin;
+        public MapPin SelectedPin
+        {
+            get => _selectedPin;
+            set
+            {
+                if (_selectedPin != value)
+                {
+                    _selectedPin = value;
+                    OnPropertyChanged(nameof(SelectedPin));
+
+                    ShowCard = _selectedPin != null;
+                }
+            }
+        }
+
+        private double _cardX;
+        public double CardX
+        {
+            get => _cardX;
+            set
+            {
+                _cardX = value;
+                OnPropertyChanged(nameof(CardX));
+            }
+        }
+
+        private double _cardY;
+        public double CardY
+        {
+            get => _cardY;
+            set
+            {
+                _cardY = value;
+                OnPropertyChanged(nameof(CardY));
+            }
+        }
 
         #endregion
-
 
         public MainViewModel() => InitializeViewModel();
 
