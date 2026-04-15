@@ -22,7 +22,12 @@ namespace MallMapKiosk.ViewModels
             "media_4.mp4"
         };
 
-        
+
+        #region current info
+
+        #endregion
+
+
         public MainViewModel() => InitializeViewModel();
 
         private int _currentMediaIndex = 0;
