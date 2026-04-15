@@ -3,8 +3,6 @@
 A modern, touch-friendly mall navigation kiosk application built with C#, WPF, and .NET Core.
 Designed for large interactive displays, this system helps users easily explore mall layouts, stores, and services.
 
-[Demo Video]()
-
 ![Screenshot](screenshots/MainWindow.png)
 
 ## • Features
@@ -29,15 +27,6 @@ Designed for large interactive displays, this system helps users easily explore 
 - Performance Optimized
 - Smooth UI rendering
 - Lightweight architecture
-
-![Screenshot](screenshots/Fullscreen.png)
-
-![Screenshot](screenshots/Stores.png)
-
-![Screenshot](screenshots/Dining.png)
-
-![Screenshot](screenshots/Search.png)
-
 
 ## • Tech Stack
 
