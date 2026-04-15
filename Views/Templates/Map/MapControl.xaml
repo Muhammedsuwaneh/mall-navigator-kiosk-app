@@ -102,7 +102,7 @@
                                     CornerRadius="12">
 
                                     <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="MouseDown">
+                                        <i:EventTrigger EventName="TouchDown">
                                             <i:InvokeCommandAction Command="{Binding DataContext.PinCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding Id}" />
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>

@@ -89,7 +89,7 @@
                                 Cursor="Hand">
 
                                 <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="MouseDown">
+                                    <i:EventTrigger EventName="TouchDown">
                                         <i:InvokeCommandAction Command="{Binding DataContext.FilteredItemCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding Name}" />
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>

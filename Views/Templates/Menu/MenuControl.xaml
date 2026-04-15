@@ -51,7 +51,7 @@
 
 
                     <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="MouseDown">
+                        <i:EventTrigger EventName="TouchDown">
                             <i:InvokeCommandAction Command="{Binding MenuButtonCommand}" CommandParameter="Stores" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
@@ -93,7 +93,7 @@
 
 
                     <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="MouseDown">
+                        <i:EventTrigger EventName="TouchDown">
                             <i:InvokeCommandAction Command="{Binding MenuButtonCommand}" CommandParameter="DiningRoom" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
@@ -135,7 +135,7 @@
 
 
                     <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="MouseDown">
+                        <i:EventTrigger EventName="TouchDown">
                             <i:InvokeCommandAction Command="{Binding MenuButtonCommand}" CommandParameter="RestRoom" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
@@ -177,7 +177,7 @@
 
 
                     <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="MouseDown">
+                        <i:EventTrigger EventName="TouchDown">
                             <i:InvokeCommandAction Command="{Binding MenuButtonCommand}" CommandParameter="Leisure" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
@@ -220,7 +220,7 @@
 
 
                     <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="MouseDown">
+                        <i:EventTrigger EventName="TouchDown">
                             <i:InvokeCommandAction Command="{Binding MenuButtonCommand}" CommandParameter="EmergencyExit" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>

@@ -23,6 +23,8 @@ namespace MallMapKiosk
             PreviewKeyDown += MainWindow_PreviewKeyDown;
             RegisterHotKeyAppExit(Key.Escape);
 
+            Cursor = Cursors.None; // hide mouse cursor
+
             AudioController.PlaySound();
         }
 

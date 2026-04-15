@@ -44,7 +44,7 @@
                 TextAlignment="Center" />
 
             <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDown">
+                <i:EventTrigger EventName="TouchDown">
                     <i:InvokeCommandAction Command="{Binding LanguageButtonCommand}" CommandParameter="EN" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
@@ -72,7 +72,7 @@
                 TextAlignment="Center" />
 
             <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDown">
+                <i:EventTrigger EventName="TouchDown">
                     <i:InvokeCommandAction Command="{Binding LanguageButtonCommand}" CommandParameter="TR" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
@@ -101,7 +101,7 @@
                 TextAlignment="Center" />
 
             <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDown">
+                <i:EventTrigger EventName="TouchDown">
                     <i:InvokeCommandAction Command="{Binding LanguageButtonCommand}" CommandParameter="AR" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>

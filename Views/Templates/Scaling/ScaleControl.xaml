@@ -41,7 +41,7 @@
                 Source="/Assets/Images/Plus Math.png" />
 
             <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDown">
+                <i:EventTrigger EventName="TouchDown">
                     <i:InvokeCommandAction Command="{Binding ScaleButtonCommand}" CommandParameter="ZoomIn" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
@@ -63,7 +63,7 @@
                 Source="/Assets/Images/Subtract.png" />
 
             <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDown">
+                <i:EventTrigger EventName="TouchDown">
                     <i:InvokeCommandAction Command="{Binding ScaleButtonCommand}" CommandParameter="ZoomOut" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
@@ -84,7 +84,7 @@
                 Source="/Assets/Images/Enlarge.png" />
 
             <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDown">
+                <i:EventTrigger EventName="TouchDown">
                     <i:InvokeCommandAction Command="{Binding ScaleButtonCommand}" CommandParameter="FullScreen" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
