@@ -42,7 +42,7 @@ Generated\ Files/
 TestResult.xml
 nunit-*.xml
 
-.obj/
+obj/
 
 # Approval Tests result files
 *.received.*
