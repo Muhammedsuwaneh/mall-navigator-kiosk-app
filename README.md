@@ -9,7 +9,7 @@ Designed for large interactive displays, this system helps users easily explore 
 
 Sample Kiosk Mockup 
 
-![Screenshot](screenshots/Stores.png)
+![Screenshot](screenshots/Kiosk.png)
 
 ## • Features
 
