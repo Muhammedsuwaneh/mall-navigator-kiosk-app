@@ -7,6 +7,10 @@ Designed for large interactive displays, this system helps users easily explore 
 
 ![Screenshot](screenshots/Stores.png)
 
+Sample Kiosk Mockup 
+
+![Screenshot](screenshots/Stores.png)
+
 ## • Features
 
 ### • Interactive Mall Map
